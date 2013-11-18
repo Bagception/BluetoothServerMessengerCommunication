@@ -89,6 +89,7 @@ public class MessengerHelper {
 			}
 
 			// Detach our existing connection.
+			serviceMessenger = null;
 			c.unbindService(sconn);
 			isConnectedWithService = false;
 
@@ -101,6 +102,7 @@ public class MessengerHelper {
 		m.setData(b);
 		if (serviceMessenger == null){
 			callback.onError(new NullPointerException("tried to send text but not connected with service"));
+			return;
 		}
 		try {
 			serviceMessenger.send(m);
