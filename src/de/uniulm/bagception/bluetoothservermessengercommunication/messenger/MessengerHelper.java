@@ -95,7 +95,7 @@ public class MessengerHelper {
 		}
 	}
 	
-	public void sendMessage(Bundle b){
+	public void sendBundle(Bundle b){
 		Message m = Message.obtain(null,
 				MessengerConstants.MESSAGE_BUNDLE_MESSAGE);
 		m.setData(b);
