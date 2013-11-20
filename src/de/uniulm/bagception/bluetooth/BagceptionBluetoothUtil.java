@@ -34,6 +34,7 @@ public class BagceptionBluetoothUtil {
 				} catch (IOException e) {
 					callback.isReachable(device, false);
 					e.printStackTrace();
+					return;
 				}
 				callback.isReachable(device, true);
 			}
