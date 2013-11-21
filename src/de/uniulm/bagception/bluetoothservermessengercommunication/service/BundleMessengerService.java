@@ -28,4 +28,12 @@ public abstract class BundleMessengerService extends MessengerService{
 		   sendToClients(m);
 		  
 	   }
+	   
+	   public void sendCommandBundle(Bundle b){
+		   Message m = Message.obtain(null,
+					MessengerConstants.MESSAGE_BUNDLE_COMMAND);
+		   m.setData(b);
+		   sendToClients(m);
+		  
+	   }
 }

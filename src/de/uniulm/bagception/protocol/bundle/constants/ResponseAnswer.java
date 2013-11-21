@@ -2,14 +2,14 @@ package de.uniulm.bagception.protocol.bundle.constants;
 
 import android.os.Bundle;
 
-public enum Response {
+public enum ResponseAnswer {
 	Ask_For_Specific_Device(0), Confirm_Established_Connection(1);
 
-	public static final String EXTRA_RESPONSECODE = "de.uniulm.bundle.extra.bluetooth.comm.responsecode";
 	
+	private static final String EXTRA_RESPONSE_ANSWER_CODE = "de.uniulm.bundle.extra.bluetooth.comm.responsecode";
 
 	
-	private final int responsecode;
+	private final int responseanswercode;
 
 	/*
 	 * ############################################### ###############
@@ -17,8 +17,8 @@ public enum Response {
 	 * #################################################
 	 */
 
-	private Response(int code) {
-		this.responsecode = code;
+	private ResponseAnswer(int code) {
+		this.responseanswercode = code;
 	}
 
 	/*
@@ -27,12 +27,8 @@ public enum Response {
 	 * #################################################
 	 */
 
-	public int getResponseCode() {
-		return responsecode;
-	}
-	
-	public class EXTRA_KEYS{
-		public static final String PAYLOAD = EXTRA_RESPONSECODE+"payload";  
+	public int getResponseAnswerCode() {
+		return responseanswercode;
 	}
 
 	/*
@@ -40,15 +36,21 @@ public enum Response {
 	 * ############# #################################################
 	 */
 
-	public static Bundle getResponseBundle(Response resp) {
+	public static Bundle getResponseAnswerBundle(ResponseAnswer resp) {
 		Bundle ret = new Bundle();
-		ret.putInt(EXTRA_RESPONSECODE, resp.getResponseCode());
+		ret.putInt(EXTRA_RESPONSE_ANSWER_CODE, resp.getResponseAnswerCode());
 		return ret;
 	}
 
-	public static Response getResponse(Bundle b) {
-		return Response.values()[b.getInt(EXTRA_RESPONSECODE)];
+	public static ResponseAnswer getResponseAnswer(Bundle b) {
+		return ResponseAnswer.values()[b.getInt(EXTRA_RESPONSE_ANSWER_CODE)];
+		
 	}
+	
+	public class EXTRA_KEYS{
+		public static final String PAYLOAD = EXTRA_RESPONSE_ANSWER_CODE+"payload";  
+	}
+	
 
 	
 

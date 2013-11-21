@@ -43,6 +43,10 @@ public class MessengerHelper {
 			case MessengerConstants.MESSAGE_BUNDLE_STATUS:
 				callback.onStatusMessage(msg.getData());
 				break;
+				
+			case MessengerConstants.MESSAGE_BUNDLE_COMMAND:
+				callback.onCommandMessage(msg.getData());
+				break;
 			}
 			return false;
 		}
@@ -57,6 +61,7 @@ public class MessengerHelper {
 		public void onServiceDisconnected(ComponentName name) {
 			serviceMessenger = null;
 			isConnectedWithService = false;
+			callback.disconnectedFromRemoteService();
 		}
 
 		@Override
@@ -74,6 +79,7 @@ public class MessengerHelper {
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
+			callback.connectedWithRemoteService();
 		}
 	};
 
@@ -97,6 +103,7 @@ public class MessengerHelper {
 			serviceMessenger = null;
 			c.unbindService(sconn);
 			isConnectedWithService = false;
+			callback.disconnectedFromRemoteService();
 
 		}
 	}
@@ -113,9 +120,13 @@ public class MessengerHelper {
 		sendBundle(b, MessengerConstants.MESSAGE_BUNDLE_STATUS);
 	}
 
+	public void sendCommandBundle(Bundle b){
+		sendBundle(b, MessengerConstants.MESSAGE_BUNDLE_COMMAND);
+	}
+	
 	private void sendBundle(Bundle b, int messageType) {
 		Message m = Message.obtain(null,
-				MessengerConstants.MESSAGE_BUNDLE_MESSAGE);
+				messageType);
 		m.setData(b);
 		if (serviceMessenger == null) {
 			callback.onError(new NullPointerException(
