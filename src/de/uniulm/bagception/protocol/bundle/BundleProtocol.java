@@ -6,6 +6,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 
 public class BundleProtocol {
@@ -31,6 +33,14 @@ public class BundleProtocol {
 			//TODO handle
 			e.printStackTrace();
 		}
+
+//		Parcel p = Parcel.obtain();
+//		byte[] strBytes = s.getBytes();
+//		p.unmarshall(strBytes, 0, strBytes.length);
+//		Bundle b=new Bundle();
+//		b.readFromParcel(p);
+//		callback.onBundleRecv(b);
+		
 	}
 	
 	public String out(Bundle b){
@@ -42,8 +52,13 @@ public class BundleProtocol {
 				e.printStackTrace();
 			}
 		}
-		
-		
+
 		return json.toString();
+		
+//		Parcel parcel = Parcel.obtain();
+//		b.writeToParcel(parcel, 0);
+//		return parcel.marshall().toString();
+		
+
 	}
 }
