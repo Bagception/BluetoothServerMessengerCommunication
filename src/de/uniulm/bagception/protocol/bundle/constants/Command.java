@@ -3,7 +3,7 @@ package de.uniulm.bagception.protocol.bundle.constants;
 import android.os.Bundle;
 
 public enum Command {
-	TRIGGER_SCAN_DEVICES(0),PING(1),PONG(2),RESEND_STATUS(3),DISCONNECT(4);
+	TRIGGER_SCAN_DEVICES(0),PING(1),PONG(2),RESEND_STATUS(3),DISCONNECT(4),POLL_ALL_RESPONSES(5);
 
 	private static final String EXTRA_COMMAND = "de.uniulm.bundle.extra.bluetooth.comm.command";
 
