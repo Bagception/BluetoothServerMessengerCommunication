@@ -15,7 +15,8 @@ public enum ResponseAnswer {
 
 	
 	private static final String EXTRA_RESPONSE_ANSWER_CODE = "de.uniulm.bundle.extra.bluetooth.comm.responsecode";
-
+	
+	
 	
 	private final int responseanswercode;
 
@@ -40,6 +41,16 @@ public enum ResponseAnswer {
 	}
 	
 	/**
+	 * ACKnowledgement that the message is received by an endpoint
+	 * @return
+	 */
+	public Bundle getACK(){
+		Bundle ret = toBundle();
+		ret.putBoolean(ResponseAnswer.EXTRA_KEYS.isACK, true);
+		return ret;
+	}
+	
+	/**
 	 * creates a bundle ready to send
 	 * Alternatively use the static method {@link #getResponseAnswer(Bundle)}
 	 * @return a bundle that can be sent via {@link MessengerHelper#sendResponseBundle(Bundle)}
@@ -53,6 +64,7 @@ public enum ResponseAnswer {
 	 * ############# #################################################
 	 */
 
+	
 	
 	/**
 	 * creates a bundle ready to send
@@ -84,9 +96,16 @@ public enum ResponseAnswer {
 	 */
 	public class EXTRA_KEYS{
 		public static final String PAYLOAD = EXTRA_RESPONSE_ANSWER_CODE+"payload";  
+		public static final String isACK = EXTRA_RESPONSE_ANSWER_CODE+"isack";
 	}
 	
 
+	public static boolean isACK(Bundle b){
+		boolean ack = b.getBoolean(ResponseAnswer.EXTRA_KEYS.isACK, false);
+		return ack;
+		
+	}
+	
 	
 
 }
