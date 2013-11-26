@@ -1,17 +1,13 @@
 package de.uniulm.bagception.bluetoothservermessengercommunication.activities;
 
 import android.app.Activity;
-import android.app.PendingIntent.OnFinished;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import de.philipphock.android.lib.logging.LOG;
 import de.philipphock.android.lib.services.ServiceUtil;
 import de.philipphock.android.lib.services.observation.ConstantFactory;
 import de.philipphock.android.lib.services.observation.ServiceObservationActor;
 import de.philipphock.android.lib.services.observation.ServiceObservationReactor;
-import de.uniulm.bagception.bluetoothservermessengercommunication.messenger.MessengerHelper;
-import de.uniulm.bagception.bluetoothservermessengercommunication.messenger.MessengerHelperCallback;
 
 public abstract class ServiceObserverActivity extends Activity
 implements ServiceObservationReactor{

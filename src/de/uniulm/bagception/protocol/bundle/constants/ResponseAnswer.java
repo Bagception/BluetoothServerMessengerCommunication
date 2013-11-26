@@ -1,7 +1,7 @@
 package de.uniulm.bagception.protocol.bundle.constants;
 
-import de.uniulm.bagception.bluetoothservermessengercommunication.messenger.MessengerHelper;
 import android.os.Bundle;
+import de.uniulm.bagception.bluetoothservermessengercommunication.messenger.MessengerHelper;
 /**
  * Answer Message to Response @see {@link Response}
  * @author phil
@@ -41,14 +41,24 @@ public enum ResponseAnswer {
 	}
 	
 	/**
-	 * ACKnowledgement that the message is received by an endpoint
-	 * @return
+	 * ACKnowledgement that the message is received by an endpoint<br><br>
+	 * <b>To send an ACK-Message:</b><br>
+	 * <pre>
+	 * {@code
+	 * MessengerHelper msgH; //should be initialized properly
+	 * Bundle toSend = ResponseAnswer.Ask_For_Specific_Device.getACK();
+	 * msgH.sendResponseBundle(toSend);
+	 * }</pre>
+	 * 
+	 * @return the Bundle to send to a remote endpoint
 	 */
 	public Bundle getACK(){
 		Bundle ret = toBundle();
 		ret.putBoolean(ResponseAnswer.EXTRA_KEYS.isACK, true);
 		return ret;
 	}
+	
+
 	
 	/**
 	 * creates a bundle ready to send
@@ -99,14 +109,31 @@ public enum ResponseAnswer {
 		public static final String isACK = EXTRA_RESPONSE_ANSWER_CODE+"isack";
 	}
 	
-
+	/**
+	 * Checks if the Bundle is an Acknowledgement-Message for a Response.
+	 * <br>
+	 * If an endpoint (that is usually the {@link ResponseSystem}) receives an <i>ACK</i>,
+	 * this means that the Response was sucessfully read and processed 
+	 * <br><br>
+	 * <b>To receive an ACK-Message:</b>
+	 * </br>
+	 * <pre>
+	 * {@code
+	 * Bundle fromMessageHandler; //should be initialized properly
+	 * boolean isAck = r.isACK(fromMessageHandler);
+	 * 
+	 * }</pre>
+	 * 
+	 * @param b the Bundle received by a handler
+	 * @return true if the message is an ACK-Message
+	 */
 	public static boolean isACK(Bundle b){
 		boolean ack = b.getBoolean(ResponseAnswer.EXTRA_KEYS.isACK, false);
 		return ack;
 		
 	}
 	
-	
+
 
 }
 

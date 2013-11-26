@@ -1,6 +1,5 @@
 package de.uniulm.bagception.bluetoothservermessengercommunication.messenger;
 
-import de.uniulm.bagception.protocol.bundle.constants.Command;
 import android.os.Bundle;
 
 public interface MessengerHelperCallback {
