@@ -11,8 +11,10 @@ public enum ResponseAnswer {
 	
 	Ask_For_Specific_Device(0), 
 	
-	Confirm_Established_Connection(1);
-
+	Confirm_Established_Connection(1),
+	
+	NOT_AN_RESPONSE_ANSWER(2);
+	
 	
 	private static final String EXTRA_RESPONSE_ANSWER_CODE = "de.uniulm.bundle.extra.bluetooth.comm.responsecode";
 	
@@ -93,6 +95,12 @@ public enum ResponseAnswer {
 	 * @return enum representation of the bundle
 	 */
 	public static ResponseAnswer getResponseAnswer(Bundle b) {
+		int code = b.getInt(EXTRA_RESPONSE_ANSWER_CODE,-1);
+		
+		if (code == -1){
+			return NOT_AN_RESPONSE_ANSWER;
+		}
+			
 		return ResponseAnswer.values()[b.getInt(EXTRA_RESPONSE_ANSWER_CODE)];
 		
 	}
