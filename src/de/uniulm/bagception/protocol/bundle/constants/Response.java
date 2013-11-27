@@ -30,8 +30,14 @@ public enum Response {
 	 * 
 	 * <b>keep in mind that any use of BluetoothDevice requires bluetooth permission</b>
 	 */
-	Confirm_Established_Connection(1);
+	Confirm_Established_Connection(1),
+	
+	/**
+	 * clears all notifications, the user might see until the next poll
+	 */
+	CLEAR_RESPONSES(2);
 
+	
 	public static final String EXTRA_RESPONSECODE = "de.uniulm.bundle.extra.bluetooth.comm.responsecode";
 	
 
