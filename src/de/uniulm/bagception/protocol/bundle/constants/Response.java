@@ -35,7 +35,9 @@ public enum Response {
 	/**
 	 * clears all notifications, the user might see until the next poll
 	 */
-	CLEAR_RESPONSES(2);
+	CLEAR_RESPONSES(2),
+	
+	BLUETOOTH_CONNECTION(3);
 
 	
 	public static final String EXTRA_RESPONSECODE = "de.uniulm.bundle.extra.bluetooth.comm.responsecode";
@@ -82,6 +84,7 @@ public enum Response {
 	 */
 	public class EXTRA_KEYS{
 		public static final String PAYLOAD = EXTRA_RESPONSECODE+"payload";  
+		public static final String VALUE_HAS_CHANGED = EXTRA_RESPONSECODE+"valhaschanged";
 	}
 
 	/*
