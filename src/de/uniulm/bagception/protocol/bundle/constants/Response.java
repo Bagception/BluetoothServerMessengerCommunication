@@ -85,6 +85,7 @@ public enum Response {
 	public class EXTRA_KEYS{
 		public static final String PAYLOAD = EXTRA_RESPONSECODE+"payload";  
 		public static final String VALUE_HAS_CHANGED = EXTRA_RESPONSECODE+"valhaschanged";
+		public static final String NOTIFICATIONS_TO_CLEAR = EXTRA_RESPONSECODE+"notificationstoclear";
 	}
 
 	/*
